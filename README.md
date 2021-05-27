@@ -1,10 +1,11 @@
 # challengezedelivery
 # Install
 You will need to install [Docker-compose](https://docs.docker.com/compose/install/) to run the database and the app.
-(Optional) If for some reason you want to reconpile the source code, you will need to install [Maven](https://maven.apache.org/install.html) on your local machine.
+
+(Optional) If for some reason you want to recompile the source code, you will need to install [Maven](https://maven.apache.org/install.html) on your local machine.
 
 # Run
-Open the directory that you have cloned the master branch, and run on a prompt `docker-compose up`.
+Open the directory that you have cloned the master branch and run on a new terminal `docker-compose up`.
 
 Once the database and the application is up, you can continue and test the application.
 
