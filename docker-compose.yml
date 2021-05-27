@@ -1,0 +1,38 @@
+version: '3.7'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'challengezedb'
+      MYSQL_USER: 'admin'
+      MYSQL_PASSWORD: 'admin'
+      MYSQL_ROOT_PASSWORD: 'admin'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - ./scripts:/docker-entrypoint-initdb.d
+      - ./db_data:/var/lib/mysql
+    hostname: db
+  app:
+    build:
+      context: challenge
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on: 
+      - db
+    environment:      
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin  
+      SPRING_DATASOURCE_URL: jdbc:mysql://db/challengezedb?useSSL=false&allowPublicKeyRetrieval=true
+    hostname: app
+    links:
+      - db
+
+volumes:
+  db_data: {}
+

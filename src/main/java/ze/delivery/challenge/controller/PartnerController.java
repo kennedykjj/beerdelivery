@@ -21,7 +21,7 @@ import ze.delivery.challenge.service.PartnerServiceI;
 
 @RestController
 @Component
-public class PartnerController implements PartnerControllerI{
+public class PartnerController implements PartnerControllerI {
 
 	@Autowired
 	private PartnerServiceI partnerService;
@@ -34,18 +34,17 @@ public class PartnerController implements PartnerControllerI{
 			throws JsonProcessingException {
 		GeoJson ret = partnerService.findById(partnerId);
 
+		ResponseEntity<GeoJson> responseEntity = null;
 		if (ret != null) {
 			LOG.info("Partner {} found. Data: {}", partnerId, ret.toString());
-			ResponseEntity<GeoJson> responseEntity = new ResponseEntity<>(ret, HttpStatus.OK);
-			
-			return responseEntity;
-			
+			responseEntity = new ResponseEntity<>(ret, HttpStatus.OK);
+
 		} else {
 			LOG.info("Partner {} not found.", partnerId);
-			ResponseEntity<GeoJson> responseEntity = new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-			
-			return responseEntity;
+			responseEntity = new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+
 		}
+		return responseEntity;
 	}
 
 	@RequestMapping(value = "/partner", method = RequestMethod.POST)
@@ -53,8 +52,8 @@ public class PartnerController implements PartnerControllerI{
 	public ResponseEntity<GeoJson> PostPartner(@RequestBody GeoJson geoJson) {
 		partnerService.saveGeoJson(geoJson);
 		LOG.info("Partner saved. Data: {}", geoJson.toString());
-		
-		return ResponseEntity.ok().build();
+
+		return new ResponseEntity<>(null, HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = "/partner/nearby/{lon}/{lat}", method = RequestMethod.GET)
@@ -62,8 +61,15 @@ public class PartnerController implements PartnerControllerI{
 	public ResponseEntity<GeoJson> getPartnerByCoordinate(@PathVariable("lon") Double lon,
 			@PathVariable("lat") Double lat) {
 		GeoJson ret = partnerService.findNearby(new Point(lon, lat));
-		LOG.info("Nearby partner {} found. Data: {}", ret.getId(), ret.toString());
-		ResponseEntity<GeoJson> responseEntity = new ResponseEntity<>(ret, HttpStatus.OK);
+
+		ResponseEntity<GeoJson> responseEntity = null;
+		if (ret != null) {
+			LOG.info("Nearby partner {} found. Data: {}", ret.getId(), ret.toString());
+			responseEntity = new ResponseEntity<>(ret, HttpStatus.OK);
+		} else {
+			LOG.info("Nearby partner not found for coordinates: {}, {}.", lon, lat);
+			responseEntity = new ResponseEntity<>(ret, HttpStatus.NO_CONTENT);
+		}
 
 		return responseEntity;
 	}

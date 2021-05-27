@@ -53,7 +53,7 @@ public class PartnerControllerTest {
 	public void testGetPartnerNotFound() throws Exception {
 		GeoJson obj = new ObjectMapper().readValue(jsonGeoJson, GeoJson.class);
 		doReturn(obj).when(partnerServiceMock).findById(2);
-		mockMvc.perform(get("/partner/1")).andExpect(status().isNotFound());
+		mockMvc.perform(get("/partner/1")).andExpect(status().isNoContent());
 	}
 
 	@Test
@@ -61,7 +61,7 @@ public class PartnerControllerTest {
 		Mockito.doNothing().when(partnerServiceMock).saveGeoJson(Mockito.any());
 		mockMvc.perform(post("/partner")
 			    .contentType("application/json")
-				.content(jsonGeoJson)).andExpect(status().isOk());
+				.content(jsonGeoJson)).andExpect(status().isCreated());
 	}
 	
 	@Test
