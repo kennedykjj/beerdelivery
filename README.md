@@ -2,17 +2,14 @@
 # Install
 1. You will need to install [Docker](https://docs.docker.com/compose/install/) to run the database and the app.
 
-2. Build the app image using the following command: 
-```
-docker build -t challengezedelivery_app:latest ./
-```
+2. Build the app image using the following command: ```docker build -t challengezedelivery_app:latest ./```.
+3. Next, run ```docker-compose up``` to start the application.
+
+(Important) Make sure that the ports 3306 and 8080 are not being used, if you wish you can change them on the ```docker-compose.yml``` file.
 
 ### (Optional) 
 1. If you want to recompile the source code, you will need to install [Maven](https://maven.apache.org/install.html) on your local machine.
-2. Run the command:
-```
-mvn clean install
-```
+2. Run the command:```mvn clean install```.
 
 # Run
 1. Open the directory that you have cloned the master branch and run on a new terminal `docker-compose up`.
