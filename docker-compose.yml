@@ -18,7 +18,7 @@ services:
     hostname: db
   app:
     build:
-      context: challenge
+      context: .
       dockerfile: Dockerfile
     ports:
       - "8080:8080"

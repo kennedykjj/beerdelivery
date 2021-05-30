@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ze.delivery</groupId>
-	<artifactId>challenge</artifactId>
+	<artifactId>challengezedelivery</artifactId>
 	<version>1.0.0</version>
 	<name>challenge</name>
 	<description>Challenge for Zé Delivery</description>
