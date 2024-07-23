@@ -1,11 +1,11 @@
-# challengezedelivery
+# beerdelivery
 # Install
 1. You will need to install [Docker](https://docs.docker.com/compose/install/) to run the database and the app.
 
 2. Next, run ```docker-compose up``` to start the application.
 
 ### (Optional) 
-You can build the app image using the following command: ```docker build -t challengezedelivery_app:latest ./```.
+You can build the app image using the following command: ```docker build -t beerdelivery_app:latest ./```.
 
 ### (Optional) 
 If you want to recompile the source code, you will need to install [Maven](https://maven.apache.org/install.html) on your local machine and run the command:```mvn clean install```.
@@ -19,7 +19,7 @@ Make sure that the ports 3306 and 8080 are not being used, if you wish you can c
 2. Once the database and the application is up, you can continue and test the application.
 
 # Test suggestion
-There's a Postman Collection on the root of the source code named: `challenge-ze-delivery.postman_collection.json`.
+There's a Postman Collection on the root of the source code named: `beerdelivery.postman_collection.json`.
 On that Collection will have all the three available endpoints.
 
 # Available endpoints
