@@ -4,7 +4,7 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_DATABASE: 'challengezedb'
+      MYSQL_DATABASE: 'beerdelivery'
       MYSQL_USER: 'admin'
       MYSQL_PASSWORD: 'admin'
       MYSQL_ROOT_PASSWORD: 'admin'
@@ -28,7 +28,7 @@ services:
     environment:      
       SPRING_DATASOURCE_USERNAME: admin
       SPRING_DATASOURCE_PASSWORD: admin  
-      SPRING_DATASOURCE_URL: jdbc:mysql://db/challengezedb?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://db/beerdelivery?useSSL=false&allowPublicKeyRetrieval=true
     hostname: app
     links:
       - db

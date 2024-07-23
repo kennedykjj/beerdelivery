@@ -9,11 +9,11 @@
 		<version>2.5.0</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ze.delivery</groupId>
-	<artifactId>challengezedelivery</artifactId>
+	<groupId>beer.delivery</groupId>
+	<artifactId>beerdelivery</artifactId>
 	<version>1.0.0</version>
-	<name>challenge</name>
-	<description>Challenge for Zé Delivery</description>
+	<name>beerdelivery</name>
+	<description>Beer Delivery</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
